@@ -11,6 +11,7 @@
      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
      <myfaces.version>2.1.5</myfaces.version>
      <spring.version>4.3.16.RELEASE</spring.version>
+     <failOnMissingWebXml>false</failOnMissingWebXml>
   </properties>
   
   <dependencies>
