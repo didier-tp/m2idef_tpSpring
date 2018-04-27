@@ -24,6 +24,16 @@ public class DaoCompteSimu implements IDaoCompte {
 	}
 	
 	@Override
+	public Compte findCompteByNum(Long numero) {
+		return mapComptes.get(numero);
+	}
+	
+	@Override
+	public List<Compte> findComptesDuClient(Long numClient) {
+		return new ArrayList<Compte>();//v1 : retourne liste vide
+	}
+	
+	@Override
 	public Compte createCompte(Compte c) {
 		compteur++; //simuler auto_incr;
 		c.setNumero(compteur);
@@ -31,10 +41,7 @@ public class DaoCompteSimu implements IDaoCompte {
 		return c;
 	}
 
-	@Override
-	public Compte findCompteByNum(Long numero) {
-		return mapComptes.get(numero);
-	}
+	
 	@Override
 	public void updateCompte(Compte c) {
 		mapComptes.put(c.getNumero(), c);
@@ -46,10 +53,7 @@ public class DaoCompteSimu implements IDaoCompte {
 	}
 
 
-	@Override
-	public List<Compte> findComptesDuClient(Long numClient) {
-		return new ArrayList<Compte>();
-	}
+	
 
 	
 

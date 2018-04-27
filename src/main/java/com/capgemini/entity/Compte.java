@@ -11,7 +11,8 @@ import javax.persistence.Table;
 public class Compte {
 	    @Id
 	    @GeneratedValue(strategy=GenerationType.IDENTITY)
-		private Long numero;
+		
+	    private Long numero;
 		private String label;
 		private Double solde;
 		//...
