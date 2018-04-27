@@ -2,10 +2,18 @@ package com.capgemini.dao.jpa;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import com.capgemini.dao.IDaoCompte;
 import com.capgemini.entity.Compte;
 
+/*
+ * classe d'implémentation du DAO qui 
+ * s'appuie sur JPA/Hibernate
+ */
 public class DaoCompteJpa implements IDaoCompte {
+	
+	private EntityManager entityManager;
 
 	@Override
 	public Compte findCompteByNum(Long numero) {
