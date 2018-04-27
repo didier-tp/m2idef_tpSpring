@@ -13,12 +13,18 @@
 	http://www.springframework.org/schema/context 
 	http://www.springframework.org/schema/context/spring-context.xsd">
 	
-	<context:annotation-config />
-	<!-- <context:component-scan base-package="com.capgemini" /> -->
+	<bean id="daoCompteSimu" 
+	      class="com.capgemini.dao.simu.DaoCompteSimu">
+	</bean>
 	
-	     <context:component-scan base-package="com.capgemini.service" />
+	<bean id="daoCompteJpa" 
+	      class="com.capgemini.dao.jpa.DaoCompteJpa">
+	</bean>
 	
-	     <context:component-scan base-package="com.capgemini.dao.simu" />
-	<!-- <context:component-scan base-package="com.capgemini.dao.jpa" /> -->
+	<bean id="serviceCompteImpl" 
+	  class="com.capgemini.service.ServiceCompteImpl">
+	      <property name="daoCompte"  ref="daoCompteSimu"/>
+	 <!-- <property name="daoCompte"  ref="daoCompteJpa"/> -->
+	</bean>
 
 </beans>
