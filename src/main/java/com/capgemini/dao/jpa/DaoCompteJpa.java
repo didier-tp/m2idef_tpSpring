@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.stereotype.Component;
+
 import com.capgemini.dao.IDaoCompte;
 import com.capgemini.entity.Compte;
 
@@ -11,6 +13,7 @@ import com.capgemini.entity.Compte;
  * classe d'implémentation du DAO qui 
  * s'appuie sur JPA/Hibernate
  */
+@Component
 public class DaoCompteJpa implements IDaoCompte {
 	
 	private EntityManager entityManager;

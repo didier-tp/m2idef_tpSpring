@@ -5,12 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
 import com.capgemini.dao.IDaoCompte;
 import com.capgemini.entity.Compte;
 /*
  * version "simulation sans base de données"
  * du DaoCompte (proche de la notion de "Mock")
  */
+@Component //id par defaut = "daoCompteSimu" (classe avec premiere lettre en minuscule)
+//ou bien @Repository heritant de @Component (pour DAO)
 public class DaoCompteSimu implements IDaoCompte {
 	
 	private Map<Long,Compte> mapComptes = new HashMap<Long,Compte>();
