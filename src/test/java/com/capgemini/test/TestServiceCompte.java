@@ -1,25 +1,21 @@
 package com.capgemini.test;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.capgemini.entity.Compte;
 import com.capgemini.service.IServiceCompte;
 
+@RunWith(SpringJUnit4ClassRunner.class) //avec spring-test dans pom.xml
+@ContextConfiguration("/springConfig.xml") //charger une seule fois => test performant
 public class TestServiceCompte {
-	private IServiceCompte serviceCompte; //à tester
 	
-	@Before
-	public void initTestSpringQueJaimeLeVendredi() {
-		ApplicationContext springContext;
-		springContext = 
-		  new ClassPathXmlApplicationContext("/springConfig.xml");
-		this.serviceCompte = 
-				springContext.getBean(IServiceCompte.class);
-	}
+	@Autowired
+	private IServiceCompte serviceCompte; //à tester
 	
 	@Test
 	public void testRechercherCompteParNumeroQuiVaSuperBien() {
