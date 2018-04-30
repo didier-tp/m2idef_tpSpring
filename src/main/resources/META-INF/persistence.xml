@@ -17,8 +17,9 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	    <property name="hibernate.dialect"     
 	              value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 	     <property name="hibernate.hbm2ddl.auto" 
-	             value="none" /> <!-- "none" ou "update" ou "create-drop" ou ...
+	             value="create" /> <!-- "none" ou "update" ou "create-drop" ou "create" ou
 	                               pour create table automatique  -->
+         <!-- NB: en mode "create" ou "create-drop" le fichier import.sql est interprété -->	                               
 	  </properties> 
 	
 	</persistence-unit>
