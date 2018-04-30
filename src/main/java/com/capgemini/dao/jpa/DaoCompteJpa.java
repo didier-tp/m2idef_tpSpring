@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.capgemini.dao.IDaoCompte;
+import com.capgemini.entity.Client;
 import com.capgemini.entity.Compte;
 
 /*
@@ -48,8 +49,13 @@ public class DaoCompteJpa implements IDaoCompte {
 	
 	@Override
 	public List<Compte> findComptesDuClient(Long numClient) {
-		// sera codé plus tard
-		return null;
+		//solution 1 :
+		Client cli = entityManager.find(Client.class, numClient);
+		List<Compte> comptesDuClient = cli.getComptes();
+		comptesDuClient.size(); //pour eviter "lazy exception" coté web ou coté test
+		return comptesDuClient;
+		
+		
 	}
 
 }

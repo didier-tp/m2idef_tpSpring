@@ -33,8 +33,7 @@ public class ServiceCompteImpl implements IServiceCompte {
 
 	@Override
 	public List<Compte> rechercherComptesDuClient(Long numClient) {
-		// TODO Auto-generated method stub
-		return null;
+		return daoCompte.findComptesDuClient(numClient);
 	}
 
 	@Override

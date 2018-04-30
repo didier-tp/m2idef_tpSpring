@@ -1,5 +1,7 @@
 package com.capgemini.test;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,5 +24,12 @@ public class TestServiceCompte {
 		Compte c1 = this.serviceCompte.rechercherCompteParNumero(1L);
 		Assert.assertTrue(c1.getNumero()==1L);
 		System.out.println("c1="+c1.toString());
+	}
+	
+	@Test
+	public void testRechercherComptesDuClient() {
+		List<Compte> listeComptes = this.serviceCompte.rechercherComptesDuClient(1L);
+		Assert.assertTrue(listeComptes.size()>=1);
+		System.out.println("listeComptes="+listeComptes);
 	}
 }
