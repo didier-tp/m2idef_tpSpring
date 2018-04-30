@@ -27,6 +27,8 @@
 		<property name="username" value="root" />
 		<property name="password" value="root" />
 	</bean>
+	<!-- au minimum : cmd ; mysql ; create database minibank_db; -->
+	
 	<bean id="myEmf"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="myDataSource" />
