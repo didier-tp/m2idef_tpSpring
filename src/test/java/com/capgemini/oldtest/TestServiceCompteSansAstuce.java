@@ -1,4 +1,4 @@
-package com.capgemini.test;
+package com.capgemini.oldtest;
 
 import org.junit.After;
 import org.junit.Assert;

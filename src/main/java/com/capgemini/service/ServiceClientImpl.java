@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.capgemini.dao.IDaoClient;
 import com.capgemini.entity.Client;
@@ -14,6 +15,7 @@ import com.capgemini.entity.Client;
  */
 //@Component
 @Service //@Service herite de @Component
+@Transactional
 public class ServiceClientImpl implements IServiceClient{
 	
 	@Autowired
@@ -27,6 +29,22 @@ public class ServiceClientImpl implements IServiceClient{
 	@Override
 	public List<Client> rechercherTousClient() {
 		return daoClient.findAllClients();
+	}
+
+	@Override
+	public Client creerClient(Client c) {
+		return daoClient.createClient(c);
+	}
+
+	@Override
+	public void modifierClient(Client c) {
+		daoClient.updateClient(c);
+	}
+
+	@Override
+	public void supprimerClient(long numClient) {
+		Client c = daoClient.findClientByNum(numClient);
+		daoClient.deleteClient(c);
 	}
 
 }

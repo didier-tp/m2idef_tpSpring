@@ -32,4 +32,31 @@ public class TestServiceClient {
 		Assert.assertTrue(listeClients.size()>=2);
 		System.out.println("listeClients="+listeClients);
 	}
+	
+	@Test
+	public void test_crud_client() {
+		//Ajout:
+		Client nouveauClient = new Client();
+		nouveauClient.setNom("NomXy"); nouveauClient.setPrenom("prenomZz");
+		nouveauClient.setAdresse("Adresse qui va bien");
+		nouveauClient = this.serviceClient.creerClient(nouveauClient);
+		Long numCli = nouveauClient.getNumero();
+		Assert.assertNotNull(numCli);
+		//Verif insertion:
+		Client clientRelu = this.serviceClient.rechercherClientParNumero(numCli);
+		Assert.assertTrue(clientRelu.getNumero()==numCli);
+		System.out.println("clientRelu="+clientRelu.toString());
+		//Mise à jour:
+		clientRelu.setAdresse("nouvelle adresse");
+		this.serviceClient.modifierClient(clientRelu);
+		//Verif modification:
+		Client clientReluApresModif = this.serviceClient.rechercherClientParNumero(numCli);
+		Assert.assertTrue(clientReluApresModif.getAdresse().equals("nouvelle adresse"));
+		System.out.println("clientReluApresModif="+clientReluApresModif.toString());
+		//Suppression:
+		this.serviceClient.supprimerClient(numCli);
+		//Verif suppression:
+		Client clientSupprime = this.serviceClient.rechercherClientParNumero(numCli);
+		Assert.assertNull(clientSupprime);
+	}
 }

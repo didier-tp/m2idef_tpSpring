@@ -19,6 +19,8 @@ import com.capgemini.entity.Compte;
 public interface IServiceClient {
     public Client rechercherClientParNumero(Long numero);
     public List<Client> rechercherTousClient();
-    //...
+    public Client creerClient(Client c);//return Client with auto_incr pk
+    public void modifierClient(Client c);
+    public void supprimerClient(long numclient);
     
 }

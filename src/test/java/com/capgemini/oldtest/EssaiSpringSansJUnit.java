@@ -1,4 +1,4 @@
-package com.capgemini.test;
+package com.capgemini.oldtest;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
