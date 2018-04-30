@@ -32,12 +32,10 @@
 	<bean id="myEmf"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="myDataSource" />
-		<!-- ok avec hibernate 4 , probleme avec hibernate 5 sans autre config : -->
-		<!-- 
+		<!-- ok avec hibernate 4 et aussi avec hibernate 5 sans autre probleme -->
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 		</property>
-		-->
 	</bean>
 
 	<bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
