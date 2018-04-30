@@ -50,11 +50,17 @@ public class DaoCompteJpa implements IDaoCompte {
 	@Override
 	public List<Compte> findComptesDuClient(Long numClient) {
 		//solution 1 :
+		/*
 		Client cli = entityManager.find(Client.class, numClient);
 		List<Compte> comptesDuClient = cli.getComptes();
 		comptesDuClient.size(); //pour eviter "lazy exception" coté web ou coté test
 		return comptesDuClient;
-		
+		*/
+		//solution 2:
+		return entityManager.createQuery(
+				"SELECT cli.comptes FROM Client cli WHERE cli.numero  = :numCli",Compte.class)
+				   .setParameter("numCli", numClient)
+				   .getResultList();
 		
 	}
 

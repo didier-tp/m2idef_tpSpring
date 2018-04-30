@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.capgemini.dao.IDaoCompte;
 import com.capgemini.entity.Compte;
@@ -15,6 +16,7 @@ import com.capgemini.entity.Compte;
  */
 //@Component
 @Service //@Service herite de @Component
+@Transactional
 public class ServiceCompteImpl implements IServiceCompte {
 	//IDaoCompte est un type abstrait qui en englobe DoaCompteJpa et DaoCompteSimu
 	private IDaoCompte daoCompte; //null par défaut 
