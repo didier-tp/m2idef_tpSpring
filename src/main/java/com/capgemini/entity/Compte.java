@@ -1,5 +1,6 @@
 package com.capgemini.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,8 @@ public class Compte {
 	    @GeneratedValue(strategy=GenerationType.IDENTITY)
 		
 	    private Long numero;
+	    
+	    @Column(length=32) //pour VARCHAR(32)
 		private String label;
 		private Double solde;
 		//...

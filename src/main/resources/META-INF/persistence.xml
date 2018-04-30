@@ -6,6 +6,9 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="tpSpring"
 	                  transaction-type="RESOURCE_LOCAL">
+	                  
+	 <!-- pour une version recente d'hibernate (ex: 5.2.17.Final ) -->
+     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>	                  
 	
 	        <class>com.capgemini.entity.Compte</class>
 	   <!-- <class>com.capgemini.entity.Client</class> -->
@@ -14,7 +17,8 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	    <property name="hibernate.dialect"     
 	              value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 	     <property name="hibernate.hbm2ddl.auto" 
-	             value="update" /> <!-- create table automatique  -->
+	             value="none" /> <!-- "none" ou "update" ou "create-drop" ou ...
+	                               pour create table automatique  -->
 	  </properties> 
 	
 	</persistence-unit>
