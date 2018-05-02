@@ -50,19 +50,24 @@ public class DaoCompteJpa implements IDaoCompte {
 	@Override
 	public List<Compte> findComptesDuClient(Long numClient) {
 		/*
-		//solution 1 :
+		//solution 1 (exploitant le lien @OneToMany):
 		Client cli = entityManager.find(Client.class, numClient);
 		List<Compte> comptesDuClient = cli.getComptes();
 		comptesDuClient.size(); //pour eviter "lazy exception" coté web ou coté test
 		return comptesDuClient;
 		*/
+		/*
 		//solution 2:
 		return entityManager.createQuery(
 				"SELECT cpt FROM Client cli INNER JOIN cli.comptes cpt " 
 				+ " WHERE cli.numero  = :numCli",Compte.class)
 				   .setParameter("numCli", numClient)
+				   .getResultList(); */
+		//solution 3 (uniquement basé sur le lien @ManyToOne):
+		return entityManager.createQuery(
+				"SELECT cpt FROM Compte cpt WHERE cpt.client.numero = :numCli",Compte.class)
+				   .setParameter("numCli", numClient)
 				   .getResultList();
-		
 	}
 
 }
