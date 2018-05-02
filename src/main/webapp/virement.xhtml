@@ -13,8 +13,22 @@
 	    <h:messages globalOnly="true" />
 	    <h:form>
 	       montant : <h:inputText value="#{virementMBean.montant}" /> <br/>
-	       numCptDeb : <h:inputText value="#{virementMBean.numCptDeb}" /> <br/>
-	       numCptCred : <h:inputText value="#{virementMBean.numCptCred}" /> <br/>
+	       numCptDeb : 
+	         <!-- <h:inputText value="#{virementMBean.numCptDeb}" /> -->
+	         <h:selectOneMenu value="#{virementMBean.numCptDeb}">
+	              <f:selectItems value="#{clientComptesMBean.comptes}" 
+	               		var="c"  itemValue="#{c.numero}" 
+	               		itemLabel="#{c.numero} - #{c.label} - #{c.solde}"/>
+	         </h:selectOneMenu> 
+	       <br/>
+	       numCptCred : 
+	       <!-- <h:inputText value="#{virementMBean.numCptCred}" /> -->
+	       <h:selectOneMenu value="#{virementMBean.numCptCred}">
+	              <f:selectItems value="#{clientComptesMBean.comptes}" 
+	               		var="c"  itemValue="#{c.numero}" 
+	               		itemLabel="#{c.numero} - #{c.label} - #{c.solde}"/>
+	         </h:selectOneMenu> 
+	       <br/>
 	       <h:commandButton value="effectuer virement" 
 	          action="#{virementMBean.virement}" />
 	    </h:form>
