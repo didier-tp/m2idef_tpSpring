@@ -36,8 +36,7 @@ public class VirementMBean {
 			} catch (Exception e) {
 				FacesContext.getCurrentInstance().addMessage(null, 
 						new FacesMessage("echec virement", e.getMessage()));
-				//<h:messages globalOnly="true" />
-			}
+				}
 			return suite;
 		}
 
