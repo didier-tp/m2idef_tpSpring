@@ -16,7 +16,7 @@ import com.capgemini.entity.Compte;
  */
 //@Component
 @Service //@Service herite de @Component
-//@Transactional
+@Transactional
 public class ServiceCompteImpl implements IServiceCompte {
 	//IDaoCompte est un type abstrait qui en englobe DoaCompteJpa et DaoCompteSimu
 	private IDaoCompte daoCompte; //null par défaut 
@@ -39,7 +39,7 @@ public class ServiceCompteImpl implements IServiceCompte {
 	}
 
 	@Override
-	@Transactional
+	//@Transactional ici ou au dessus de la classe
 	public void transferer(double montant, Long numCptDeb, Long numCptCred) {
 		Compte cptDeb = daoCompte.findCompteByNum(numCptDeb);
 		cptDeb.setSolde(cptDeb.getSolde()-montant);
