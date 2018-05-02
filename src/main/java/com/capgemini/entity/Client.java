@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class Client {
 	    private String adresse;
 		//...
 	    
-	    @OneToMany(mappedBy="client") //un client peut avoir un ou plusieurs comptes
+	    @OneToMany(mappedBy="client",fetch=FetchType.LAZY) //un client peut avoir un ou plusieurs comptes
 	    //mapped="nom_java_de_la_relation_many_to_one_inverse"
 	    private List<Compte> comptes;//avec get/set
 		
@@ -37,10 +38,16 @@ public class Client {
 		
 		
 
+
+
+
 		@Override
 		public String toString() {
 			return "Client [numero=" + numero + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + "]";
 		}
+
+
+
 
 
 

@@ -68,6 +68,7 @@ public class DaoCompteJpa implements IDaoCompte {
 				"SELECT cpt FROM Compte cpt WHERE cpt.client.numero = :numCli",Compte.class)
 				   .setParameter("numCli", numClient)
 				   .getResultList();
+				   
 	}
 
 }
