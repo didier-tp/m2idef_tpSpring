@@ -20,6 +20,23 @@ public class TestServiceCompte {
 	private IServiceCompte serviceCompte; //à tester
 	
 	@Test
+	public void testBonTransfert() {
+		Compte cptDebAvant = this.serviceCompte.rechercherCompteParNumero(1L);
+		Compte cptCredAvant = this.serviceCompte.rechercherCompteParNumero(2L);
+		System.out.println("avant bon transfert :");
+			System.out.println("\t cptDebAvant="+cptDebAvant);
+			System.out.println("\t cptCredAvant="+cptCredAvant);
+		this.serviceCompte.transferer(50, 1L, 2L);
+		Compte cptDebApres = this.serviceCompte.rechercherCompteParNumero(1L);
+		Compte cptCredApres = this.serviceCompte.rechercherCompteParNumero(2L);
+		System.out.println("apres bon transfert :");
+			System.out.println("\t cptDebApres="+cptDebApres);
+			System.out.println("\t cptCredApres="+cptCredApres);
+		Assert.assertEquals(cptDebApres.getSolde(), cptDebAvant.getSolde()-50, 0.001);
+		Assert.assertEquals(cptCredApres.getSolde(), cptCredAvant.getSolde()+50, 0.001);
+	}
+	
+	@Test
 	public void testRechercherCompteParNumeroQuiVaSuperBien() {
 		Compte c1 = this.serviceCompte.rechercherCompteParNumero(1L);
 		Assert.assertTrue(c1.getNumero()==1L);
