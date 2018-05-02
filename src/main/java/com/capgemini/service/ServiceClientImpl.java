@@ -14,7 +14,8 @@ import com.capgemini.entity.Client;
  * ce dao est une "dépendance" à injecter et à utiliser pour déléguer
  */
 //@Component
-@Service //@Service herite de @Component
+@Service() //@Service herite de @Component
+//id/name par defaut = serviceClientImpl (nom classe avec miniscule au debut)
 @Transactional
 public class ServiceClientImpl implements IServiceClient{
 	
