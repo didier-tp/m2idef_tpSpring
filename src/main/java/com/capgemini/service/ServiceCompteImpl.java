@@ -39,7 +39,7 @@ public class ServiceCompteImpl implements IServiceCompte {
 	}
 
 	@Override
-	//@Transactional
+	@Transactional
 	public void transferer(double montant, Long numCptDeb, Long numCptCred) {
 		Compte cptDeb = daoCompte.findCompteByNum(numCptDeb);
 		cptDeb.setSolde(cptDeb.getSolde()-montant);

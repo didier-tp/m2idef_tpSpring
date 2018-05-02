@@ -37,6 +37,29 @@ public class TestServiceCompte {
 	}
 	
 	@Test
+	public void testMauvaisTransfert() {
+		Compte cptDebAvant = this.serviceCompte.rechercherCompteParNumero(1L);
+		Compte cptCredAvant = this.serviceCompte.rechercherCompteParNumero(2L);
+		System.out.println("avant mauvais transfert :");
+			System.out.println("\t cptDebAvant="+cptDebAvant);
+			System.out.println("\t cptCredAvant="+cptCredAvant);
+		try {
+			this.serviceCompte.transferer(50, 1L, -2L);
+			Assert.fail("une exception aurait du être levee");
+		} catch (Exception e) {
+			System.out.println("erreur normale , le compte -2 n'existe pas " 
+		                      + e.getMessage() );
+		}
+		Compte cptDebApres = this.serviceCompte.rechercherCompteParNumero(1L);
+		Compte cptCredApres = this.serviceCompte.rechercherCompteParNumero(2L);
+		System.out.println("apres mauvais transfert :");
+			System.out.println("\t cptDebApres="+cptDebApres);
+			System.out.println("\t cptCredApres="+cptCredApres);
+		Assert.assertEquals(cptDebApres.getSolde(), cptDebAvant.getSolde()-0, 0.001);
+		Assert.assertEquals(cptCredApres.getSolde(), cptCredAvant.getSolde()+0, 0.001);
+	}
+	
+	@Test
 	public void testRechercherCompteParNumeroQuiVaSuperBien() {
 		Compte c1 = this.serviceCompte.rechercherCompteParNumero(1L);
 		Assert.assertTrue(c1.getNumero()==1L);
