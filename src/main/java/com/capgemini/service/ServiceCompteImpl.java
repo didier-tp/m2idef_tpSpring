@@ -58,7 +58,7 @@ public class ServiceCompteImpl implements IServiceCompte {
 		}
 		
 		//si @Transactional au dessus de cette méthode ou bien au dessus de cette classe
-		//de service , les méthodes du dao réutilise le entityManager et la transaction
+		//de service , les méthodes du dao réutilisent le entityManager et la transaction
 		//déjà ouvert par le service métier
 		//et les objets "cptDeb" et "cptCred" sont à l'état persistants.
 		
