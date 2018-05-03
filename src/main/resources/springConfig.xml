@@ -19,23 +19,10 @@
 	<!-- <context:component-scan base-package="com.capgemini.dao.simu" /> -->
 	<context:component-scan base-package="com.capgemini.dao.jpa" />
 
-    <!-- 
-	<bean id="myDataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/minibank_db" />
-		<property name="username" value="root" />
-		<property name="password" value="" />
-	</bean>
-	 -->
-	<bean id="myDataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="org.h2.Driver" />
-		<property name="url" value="jdbc:h2:~/minibank_db" />
-		<property name="username" value="sa" />
-		<property name="password" value="" />
-	</bean>
-	<!-- au minimum : cmd ; mysql ; create database minibank_db; -->
+    <import resource="./mysqlDatasourceConfig.xml"/> <!-- avec profile "mysql" -->
+	
+	<import resource="./h2DatasourceConfig.xml"/> <!-- pour l'instant sans profile , plus tard avec profile "h2" -->
+	
 	
 	<bean id="myEmf"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
